@@ -17,6 +17,7 @@ export declare const LocalInsertEventSchema: z.ZodObject<{
     type: LocalEventType.INSERT;
     data: string;
 }>;
+export type LocalInsertEvent = z.infer<typeof LocalInsertEventSchema>;
 export declare const LocalDeleteEventSchema: z.ZodObject<{
     type: z.ZodLiteral<LocalEventType.DELETE>;
     index: z.ZodNumber;
@@ -30,6 +31,7 @@ export declare const LocalDeleteEventSchema: z.ZodObject<{
     type: LocalEventType.DELETE;
     size: number;
 }>;
+export type LocalDeleteEvent = z.infer<typeof LocalDeleteEventSchema>;
 export declare const LocalSelectEventSchema: z.ZodObject<{
     type: z.ZodLiteral<LocalEventType.SELECT>;
     index: z.ZodNumber;
@@ -43,6 +45,7 @@ export declare const LocalSelectEventSchema: z.ZodObject<{
     type: LocalEventType.SELECT;
     size: number;
 }>;
+export type LocalSelectEvent = z.infer<typeof LocalSelectEventSchema>;
 export declare const LocalEventSchema: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
     type: z.ZodLiteral<LocalEventType.INSERT>;
     index: z.ZodNumber;
