@@ -1,11 +1,12 @@
 import { z } from 'zod';
 
 export enum RemoteEventType {
-  INSERT = 'insert',
-  DELETE = 'delete',
-  SELECT = 'select',
-  ACTIVE = 'active',
-  RESET  = 'reset',
+  INSERT  = 'insert',
+  DELETE  = 'delete',
+  SELECT  = 'select',
+  ACTIVE  = 'active',
+  RESET   = 'reset',
+  CONNECT = 'connect'
 }
 
 export const RemoteInsertEventSchema = z.object({
@@ -51,12 +52,19 @@ export const RemoteResetEventSchema = z.object({
   }))
 });
 
+export const RemoteConnectEventSchema = z.object({
+  type: z.literal(RemoteEventType.CONNECT),
+  eventId: z.string(),
+  userId: z.string()
+});
+
 export const RemoteEventSchema = z.discriminatedUnion('type', [
   RemoteInsertEventSchema,
   RemoteDeleteEventSchema,
   RemoteSelectEventSchema,
   RemoteActiveEventSchema,
-  RemoteResetEventSchema
+  RemoteResetEventSchema,
+  RemoteConnectEventSchema
 ]);
 
 export type RemoteEvent = z.infer<typeof RemoteEventSchema>;

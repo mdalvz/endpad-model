@@ -4,7 +4,8 @@ export declare enum RemoteEventType {
     DELETE = "delete",
     SELECT = "select",
     ACTIVE = "active",
-    RESET = "reset"
+    RESET = "reset",
+    CONNECT = "connect"
 }
 export declare const RemoteInsertEventSchema: z.ZodObject<{
     type: z.ZodLiteral<RemoteEventType.INSERT>;
@@ -120,6 +121,19 @@ export declare const RemoteResetEventSchema: z.ZodObject<{
         userId: string;
     }[];
 }>;
+export declare const RemoteConnectEventSchema: z.ZodObject<{
+    type: z.ZodLiteral<RemoteEventType.CONNECT>;
+    eventId: z.ZodString;
+    userId: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    type: RemoteEventType.CONNECT;
+    userId: string;
+    eventId: string;
+}, {
+    type: RemoteEventType.CONNECT;
+    userId: string;
+    eventId: string;
+}>;
 export declare const RemoteEventSchema: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
     type: z.ZodLiteral<RemoteEventType.INSERT>;
     eventId: z.ZodString;
@@ -229,5 +243,17 @@ export declare const RemoteEventSchema: z.ZodDiscriminatedUnion<"type", [z.ZodOb
         size: number;
         userId: string;
     }[];
+}>, z.ZodObject<{
+    type: z.ZodLiteral<RemoteEventType.CONNECT>;
+    eventId: z.ZodString;
+    userId: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    type: RemoteEventType.CONNECT;
+    userId: string;
+    eventId: string;
+}, {
+    type: RemoteEventType.CONNECT;
+    userId: string;
+    eventId: string;
 }>]>;
 export type RemoteEvent = z.infer<typeof RemoteEventSchema>;

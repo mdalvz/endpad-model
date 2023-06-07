@@ -189,6 +189,18 @@ export declare const UpdateSessionResponseSchema: z.ZodObject<{
             size: number;
             userId: string;
         }[];
+    }>, z.ZodObject<{
+        type: z.ZodLiteral<import("./RemoteEvent").RemoteEventType.CONNECT>;
+        eventId: z.ZodString;
+        userId: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        type: import("./RemoteEvent").RemoteEventType.CONNECT;
+        userId: string;
+        eventId: string;
+    }, {
+        type: import("./RemoteEvent").RemoteEventType.CONNECT;
+        userId: string;
+        eventId: string;
     }>]>, "many">;
 }, "strip", z.ZodTypeAny, {
     events: ({
@@ -224,6 +236,10 @@ export declare const UpdateSessionResponseSchema: z.ZodObject<{
             size: number;
             userId: string;
         }[];
+    } | {
+        type: import("./RemoteEvent").RemoteEventType.CONNECT;
+        userId: string;
+        eventId: string;
     })[];
 }, {
     events: ({
@@ -259,6 +275,10 @@ export declare const UpdateSessionResponseSchema: z.ZodObject<{
             size: number;
             userId: string;
         }[];
+    } | {
+        type: import("./RemoteEvent").RemoteEventType.CONNECT;
+        userId: string;
+        eventId: string;
     })[];
 }>;
 export type UpdateSessionRequest = z.infer<typeof UpdateSessionRequestSchema>;
