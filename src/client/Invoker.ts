@@ -31,7 +31,6 @@ export class Invoker<TRequest, TResponse> {
       if (responseParseResult.success) {
         return responseParseResult.data;
       } else {
-        console.log(responseParseResult.error);
         throw new Error('Invalid response body for resource: ' + this.resource);
       }
     } else {

@@ -13,7 +13,7 @@ export const RemoteInsertEventSchema = z.object({
   type: z.literal(RemoteEventType.INSERT),
   eventId: z.string(),
   userId: z.string(),
-  index: z.number().positive(),
+  index: z.number().int().nonnegative(),
   data: z.string()
 });
 
@@ -23,8 +23,8 @@ export const RemoteDeleteEventSchema = z.object({
   type: z.literal(RemoteEventType.DELETE),
   eventId: z.string(),
   userId: z.string(),
-  index: z.number().positive(),
-  size: z.number().positive()
+  index: z.number().int().nonnegative(),
+  size: z.number().int().nonnegative()
 });
 
 export type RemoteDeleteEvent = z.infer<typeof RemoteDeleteEventSchema>;
@@ -33,8 +33,8 @@ export const RemoteSelectEventSchema = z.object({
   type: z.literal(RemoteEventType.SELECT),
   eventId: z.string(),
   userId: z.string(),
-  index: z.number().positive(),
-  size: z.number().positive()
+  index: z.number().int().nonnegative(),
+  size: z.number().int().nonnegative()
 });
 
 export type RemoteSelectEvent = z.infer<typeof RemoteSelectEventSchema>;
@@ -55,8 +55,8 @@ export const RemoteResetEventSchema = z.object({
   users: z.array(z.object({
     userId: z.string(),
     active: z.boolean(),
-    index: z.number().positive(),
-    size: z.number().positive()
+    index: z.number().int().nonnegative(),
+    size: z.number().int().nonnegative()
   }))
 });
 
