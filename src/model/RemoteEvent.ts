@@ -17,6 +17,8 @@ export const RemoteInsertEventSchema = z.object({
   data: z.string()
 });
 
+export type RemoteInsertEvent = z.infer<typeof RemoteInsertEventSchema>;
+
 export const RemoteDeleteEventSchema = z.object({
   type: z.literal(RemoteEventType.DELETE),
   eventId: z.string(),
@@ -24,6 +26,8 @@ export const RemoteDeleteEventSchema = z.object({
   index: z.number().positive(),
   size: z.number().positive()
 });
+
+export type RemoteDeleteEvent = z.infer<typeof RemoteDeleteEventSchema>;
 
 export const RemoteSelectEventSchema = z.object({
   type: z.literal(RemoteEventType.SELECT),
@@ -33,12 +37,16 @@ export const RemoteSelectEventSchema = z.object({
   size: z.number().positive()
 });
 
+export type RemoteSelectEvent = z.infer<typeof RemoteSelectEventSchema>;
+
 export const RemoteActiveEventSchema = z.object({
   type: z.literal(RemoteEventType.ACTIVE),
   eventId: z.string(),
   userId: z.string(),
   active: z.boolean()
 });
+
+export type RemoteActiveEvent = z.infer<typeof RemoteActiveEventSchema>;
 
 export const RemoteResetEventSchema = z.object({
   type: z.literal(RemoteEventType.RESET),
@@ -52,11 +60,15 @@ export const RemoteResetEventSchema = z.object({
   }))
 });
 
+export type RemoteResetEvent = z.infer<typeof RemoteResetEventSchema>;
+
 export const RemoteConnectEventSchema = z.object({
   type: z.literal(RemoteEventType.CONNECT),
   eventId: z.string(),
   userId: z.string()
 });
+
+export type RemoteConnectEvent = z.infer<typeof RemoteConnectEventSchema>;
 
 export const RemoteEventSchema = z.discriminatedUnion('type', [
   RemoteInsertEventSchema,

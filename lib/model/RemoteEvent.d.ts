@@ -26,6 +26,7 @@ export declare const RemoteInsertEventSchema: z.ZodObject<{
     userId: string;
     eventId: string;
 }>;
+export type RemoteInsertEvent = z.infer<typeof RemoteInsertEventSchema>;
 export declare const RemoteDeleteEventSchema: z.ZodObject<{
     type: z.ZodLiteral<RemoteEventType.DELETE>;
     eventId: z.ZodString;
@@ -45,6 +46,7 @@ export declare const RemoteDeleteEventSchema: z.ZodObject<{
     userId: string;
     eventId: string;
 }>;
+export type RemoteDeleteEvent = z.infer<typeof RemoteDeleteEventSchema>;
 export declare const RemoteSelectEventSchema: z.ZodObject<{
     type: z.ZodLiteral<RemoteEventType.SELECT>;
     eventId: z.ZodString;
@@ -64,6 +66,7 @@ export declare const RemoteSelectEventSchema: z.ZodObject<{
     userId: string;
     eventId: string;
 }>;
+export type RemoteSelectEvent = z.infer<typeof RemoteSelectEventSchema>;
 export declare const RemoteActiveEventSchema: z.ZodObject<{
     type: z.ZodLiteral<RemoteEventType.ACTIVE>;
     eventId: z.ZodString;
@@ -80,6 +83,7 @@ export declare const RemoteActiveEventSchema: z.ZodObject<{
     userId: string;
     eventId: string;
 }>;
+export type RemoteActiveEvent = z.infer<typeof RemoteActiveEventSchema>;
 export declare const RemoteResetEventSchema: z.ZodObject<{
     type: z.ZodLiteral<RemoteEventType.RESET>;
     eventId: z.ZodString;
@@ -121,6 +125,7 @@ export declare const RemoteResetEventSchema: z.ZodObject<{
         userId: string;
     }[];
 }>;
+export type RemoteResetEvent = z.infer<typeof RemoteResetEventSchema>;
 export declare const RemoteConnectEventSchema: z.ZodObject<{
     type: z.ZodLiteral<RemoteEventType.CONNECT>;
     eventId: z.ZodString;
@@ -134,6 +139,7 @@ export declare const RemoteConnectEventSchema: z.ZodObject<{
     userId: string;
     eventId: string;
 }>;
+export type RemoteConnectEvent = z.infer<typeof RemoteConnectEventSchema>;
 export declare const RemoteEventSchema: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
     type: z.ZodLiteral<RemoteEventType.INSERT>;
     eventId: z.ZodString;
