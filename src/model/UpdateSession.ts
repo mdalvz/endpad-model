@@ -5,7 +5,10 @@ import { RemoteEventSchema } from './RemoteEvent';
 export const UpdateSessionResource = '/update-session';
 
 export const UpdateSessionRequestSchema = z.object({
-  baseId: z.string().nullable(),
+  sessionId: z.string(),
+  userId: z.string(),
+  token: z.string(),
+  eventId: z.string().nullable(),
   events: z.array(LocalEventSchema)
 });
 

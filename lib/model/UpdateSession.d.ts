@@ -1,7 +1,10 @@
 import { z } from 'zod';
 export declare const UpdateSessionResource = "/update-session";
 export declare const UpdateSessionRequestSchema: z.ZodObject<{
-    baseId: z.ZodNullable<z.ZodString>;
+    sessionId: z.ZodString;
+    userId: z.ZodString;
+    token: z.ZodString;
+    eventId: z.ZodNullable<z.ZodString>;
     events: z.ZodArray<z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
         type: z.ZodLiteral<import("./LocalEvent").LocalEventType.INSERT>;
         index: z.ZodNumber;
@@ -40,7 +43,10 @@ export declare const UpdateSessionRequestSchema: z.ZodObject<{
         size: number;
     }>]>, "many">;
 }, "strip", z.ZodTypeAny, {
-    baseId: string | null;
+    sessionId: string;
+    userId: string;
+    token: string;
+    eventId: string | null;
     events: ({
         index: number;
         type: import("./LocalEvent").LocalEventType.INSERT;
@@ -55,7 +61,10 @@ export declare const UpdateSessionRequestSchema: z.ZodObject<{
         size: number;
     })[];
 }, {
-    baseId: string | null;
+    sessionId: string;
+    userId: string;
+    token: string;
+    eventId: string | null;
     events: ({
         index: number;
         type: import("./LocalEvent").LocalEventType.INSERT;
