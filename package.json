@@ -6,7 +6,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "commit-push": "git add . && git commit -m `Build` && git push"
+    "commit-push": "npm run build && git add . && git commit -m `Build` && git push"
   },
   "author": "Malcolm Alvarez",
   "license": "ISC",
